@@ -17,3 +17,9 @@ build/
 # IDE
 .vscode/
 .idea/
+
+# Data directories (generated/sample data - not for repo)
+data/
+backend/data/
+.sisyphus/evidence/
+docs/test-cases.md
