@@ -1,0 +1,11 @@
+QA Scenario: 프로젝트 구조 생성 확인
+
+Result:
+- /root/projects/autojudge/.git exists
+- backend/, frontend/, data/, docs/ exist
+- .gitignore exists
+- README.md exists
+
+Verification:
+- ls -la /root/projects/autojudge/
+- git status --short --branch

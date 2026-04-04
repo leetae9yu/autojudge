@@ -1,0 +1,5 @@
+Scenario: 설정 파일 로드 확인
+Workdir: /root/projects/autojudge/backend
+Command: cp .env.example .env && source venv/bin/activate && python -c "from config import Settings; print(Settings().model_dump())"
+Result: Passed
+Output: {'openrouter_api_key': 'sk-or-v1-...', 'openrouter_model': 'openai/gpt-4.1', 'law_api_key': 'your_law_api_key_here', 'database_path': PosixPath('data'), 'port': 8000, 'host': '0.0.0.0'}
