@@ -428,7 +428,7 @@
 
 ---
 
-- [ ] 5. korean-law-mcp 연동 및 데이터 수집 스크립트
+- [x] 5. korean-law-mcp 연동 및 데이터 수집 스크립트
 
   **What to do**:
   - korean-law-mcp 저장소 클론 또는 의존성으로 추가
@@ -487,7 +487,7 @@
 
 ---
 
-- [ ] 6. Markdown 데이터 스키마 설계 및 저장 구조
+- [x] 6. Markdown 데이터 스키마 설계 및 저장 구조
 
   **What to do**:
   - `data/laws/` 및 `data/precedents/` 디렉토리 생성
