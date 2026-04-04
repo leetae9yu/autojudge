@@ -1,0 +1,3 @@
+- Kept the MVP case store in-memory with a module-level dict keyed by UUID.
+- Used a Pydantic enum for Korean case types so FastAPI serializes cleanly in docs and responses.
+- Verified the API with FastAPI's `TestClient`, confirming create/get/list all return 200.

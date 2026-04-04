@@ -1,0 +1,2 @@
+- No persistence layer was added; cases reset on process restart by design for this MVP.
+- `main.py` had stale scenario-router imports that had to be removed to keep the app importable.

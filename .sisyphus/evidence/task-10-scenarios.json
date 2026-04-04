@@ -1,0 +1,49 @@
+{
+  "id": "587ef5d6-c3d7-46ae-b08e-0e3da8bea2ee",
+  "case_id": "666fb880-93d3-4c30-85eb-fab4158b4128",
+  "disclaimer": "This is not legal advice. 참고용 법적 해석 시나리오이며, 증거가 불충분하면 불확실성을 명시합니다.",
+  "scenarios": [
+    {
+      "title": "Scenario 1",
+      "interpretation": "Interpretation 1",
+      "basis": [
+        "[law] law-civil-code-001 - 민법",
+        "[precedent] precedent-2024-001 - 손해배상 청구 사건"
+      ],
+      "probability": "medium",
+      "key_factors": [
+        "인과관계",
+        "증거 충분성"
+      ],
+      "disclaimer": "This is not legal advice. 참고용 법적 해석 시나리오이며, 증거가 불충분하면 불확실성을 명시합니다."
+    },
+    {
+      "title": "Scenario 2",
+      "interpretation": "Interpretation 2",
+      "basis": [
+        "[law] law-civil-code-001 - 민법",
+        "[precedent] precedent-2024-001 - 손해배상 청구 사건"
+      ],
+      "probability": "medium",
+      "key_factors": [
+        "인과관계",
+        "증거 충분성"
+      ],
+      "disclaimer": "This is not legal advice. 참고용 법적 해석 시나리오이며, 증거가 불충분하면 불확실성을 명시합니다."
+    },
+    {
+      "title": "Scenario 3",
+      "interpretation": "Interpretation 3",
+      "basis": [
+        "[law] law-civil-code-001 - 민법",
+        "[precedent] precedent-2024-001 - 손해배상 청구 사건"
+      ],
+      "probability": "medium",
+      "key_factors": [
+        "인과관계",
+        "증거 충분성"
+      ],
+      "disclaimer": "This is not legal advice. 참고용 법적 해석 시나리오이며, 증거가 불충분하면 불확실성을 명시합니다."
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+- Exposed the router under `/api/cases` and included it directly in `main.py` for the smallest integration surface.
+- Modeled the stored resource as `Case(id, created_at, input_data)` to preserve the original submission payload.

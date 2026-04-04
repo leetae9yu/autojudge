@@ -602,7 +602,7 @@
 
 ---
 
-- [ ] 8. 사건 입력 API 및 모델 정의
+- [x] 8. 사건 입력 API 및 모델 정의
 
   **What to do**:
   - `backend/models/case.py` 작성 (Pydantic 모델):
@@ -664,7 +664,7 @@
 
 ---
 
-- [ ] 9. 법률/판례 검색 API (RAG)
+- [x] 9. 법률/판례 검색 API (RAG)
 
   **What to do**:
   - `backend/services/search.py` 작성:
@@ -786,7 +786,7 @@
 
 ---
 
-- [ ] 11. What-If API (변수 변경 및 재생성)
+- [x] 11. What-If API (변수 변경 및 재생성)
 
   **What to do**:
   - `backend/models/whatif.py` 작성:
