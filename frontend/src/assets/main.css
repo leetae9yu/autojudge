@@ -1,35 +1,59 @@
 @import './base.css';
 
+html,
+body,
 #app {
-  max-width: 1280px;
+  min-height: 100%;
+}
+
+#app {
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
 }
 
-a,
-.green {
+a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+  color: inherit;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+.app-main {
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(100%, var(--page-max-width));
+  margin: 0 auto;
+  padding-block: var(--space-7);
+  padding-inline: var(--space-4);
+}
+
+.page-shell {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.page-shell > h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: var(--line-height-tight);
+  color: var(--color-heading);
+}
+
+.page-shell > p {
+  max-width: 40rem;
+  font-size: 1.0625rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 960px) {
+  .app-shell {
+    padding-block: var(--space-8);
+    padding-inline: var(--space-6);
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+@media (max-width: 599px) {
+  .app-shell {
+    padding-block: var(--space-6);
   }
 }

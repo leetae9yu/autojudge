@@ -4,8 +4,8 @@ import { RouterView } from 'vue-router'
 
 <template>
   <v-app>
-    <v-main>
-      <v-container class="py-6">
+    <v-main class="app-main">
+      <v-container fluid class="app-shell">
         <RouterView />
       </v-container>
     </v-main>

@@ -720,7 +720,7 @@
 
 ---
 
-- [ ] 10. 시나리오 생성 API (GPT-4.1 연동)
+- [x] 10. 시나리오 생성 API (GPT-4.1 연동)
 
   **What to do**:
   - `backend/services/scenario.py` 작성:
@@ -846,7 +846,7 @@
 
 ---
 
-- [ ] 12. 사건 입력 폼 컴포넌트 (5개 필드)
+- [x] 12. 사건 입력 폼 컴포넌트 (5개 필드)
 
   **What to do**:
   - `frontend/src/views/CaseInput.vue` 작성:
@@ -906,7 +906,7 @@
 
 ---
 
-- [ ] 13. 시나리오 결과 뷰 컴포넌트
+- [x] 13. 시나리오 결과 뷰 컴포넌트
 
   **What to do**:
   - `frontend/src/views/ScenarioResult.vue` 작성:
@@ -964,7 +964,7 @@
 
 ---
 
-- [ ] 14. What-If 인터페이스 컴포넌트
+- [x] 14. What-If 인터페이스 컴포넌트
 
   **What to do**:
   - `frontend/src/views/WhatIf.vue` 작성:
