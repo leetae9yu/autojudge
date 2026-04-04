@@ -1,5 +1,9 @@
 # frontend
 
+## Legal Notice
+
+본 서비스는 법률 자문을 제공하지 않습니다. 생성된 시나리오는 참고용이며, 실제 법적 결정은 반드시 변호사와 상담하십시오.
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup

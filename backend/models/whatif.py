@@ -1,9 +1,16 @@
+"""What-if models."""
+
+# pyright: reportMissingImports=false, reportUnusedImport=false, reportUnusedParameter=false
+
 from datetime import datetime, timezone
 from typing import Any
 
 from pydantic import BaseModel, Field, field_validator
 
 from models.case import Case, CaseInput
+
+
+DISCLAIMER = "본 서비스는 법률 자문을 제공하지 않습니다. 생성된 시나리오는 참고용이며, 실제 법적 결정은 반드시 변호사와 상담하십시오."
 
 
 class WhatIfChanges(BaseModel):
@@ -64,4 +71,5 @@ class WhatIfResponse(BaseModel):
     id: str
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     original_scenario_id: str
+    disclaimer: str = DISCLAIMER
     comparison: WhatIfComparison

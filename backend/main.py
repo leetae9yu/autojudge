@@ -5,7 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from config import settings
 from routers.cases import router as cases_router
+from routers.search import router as search_router
 from routers.scenarios import router as scenarios_router
+from routers.whatif import router as whatif_router
 
 
 app = FastAPI(title=settings.app_name, debug=settings.debug)
@@ -19,7 +21,9 @@ app.add_middleware(
 )
 
 app.include_router(cases_router)
+app.include_router(search_router)
 app.include_router(scenarios_router)
+app.include_router(whatif_router)
 
 
 @app.get("/health")

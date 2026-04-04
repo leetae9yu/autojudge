@@ -2,7 +2,9 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { apiBaseUrl } from '@/api'
+import { getCase } from '@/api/cases'
+import { createWhatIf } from '@/api/whatif'
+import type { WhatIfChanges } from '@/api/whatif'
 
 type EditableField = 'facts' | 'evidence' | 'claims'
 
@@ -199,7 +201,7 @@ watch(
     loading.value = true
 
     try {
-      const response = await requestJson<CaseRecord>(`${apiBaseUrl}/cases/${id}`)
+      const response = await getCase(id)
       originalCase.value = response
       hydrateForm(response.input_data)
     } catch (error) {
@@ -227,15 +229,9 @@ async function generateScenario() {
   errorMessage.value = ''
 
   try {
-    const response = await requestJson<WhatIfResponse>(`${apiBaseUrl}/whatif`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        original_scenario_id: originalCase.value.id,
-        changes,
-      }),
+    const response = await createWhatIf({
+      original_scenario_id: originalCase.value.id,
+      changes,
     })
 
     whatIfResult.value = response
@@ -257,7 +253,7 @@ function buildChangesPayload() {
     return {}
   }
 
-  const changes: Partial<Record<EditableField, string | string[]>> = {}
+  const changes: WhatIfChanges = {}
 
   if (changedFields.value.includes('facts')) {
     changes.facts = formState.facts.trim()
@@ -288,27 +284,6 @@ function isChanged(field: EditableField) {
 
 function readErrorMessage(error: unknown, fallback: string) {
   return error instanceof Error ? error.message : fallback
-}
-
-async function requestJson<T>(input: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(input, init)
-
-  if (!response.ok) {
-    let message = '요청에 실패했습니다.'
-
-    try {
-      const payload = (await response.json()) as { detail?: string }
-      if (typeof payload.detail === 'string') {
-        message = payload.detail
-      }
-    } catch {
-      message = response.statusText || message
-    }
-
-    throw new Error(message)
-  }
-
-  return (await response.json()) as T
 }
 </script>
 

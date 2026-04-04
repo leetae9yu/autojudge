@@ -13,7 +13,7 @@ from config import settings
 from models.case import Case
 
 
-DISCLAIMER = "This is not legal advice. 참고용 법적 해석 시나리오이며, 증거가 불충분하면 불확실성을 명시합니다."
+DISCLAIMER = "본 서비스는 법률 자문을 제공하지 않습니다. 생성된 시나리오는 참고용이며, 실제 법적 결정은 반드시 변호사와 상담하십시오."
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 

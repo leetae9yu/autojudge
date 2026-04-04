@@ -1,1 +1,1 @@
-export const apiBaseUrl = '/api'
+export { ApiError, apiBaseUrl, apiClient, getApiErrorMessage, isApiError } from './client'

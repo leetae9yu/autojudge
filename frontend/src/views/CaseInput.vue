@@ -9,9 +9,9 @@ const caseStore = useCaseStore()
 
 async function handleSubmitted(createdCase: CaseRecord) {
   await router.push({
-    name: 'result',
-    query: {
-      caseId: createdCase.id,
+    name: 'scenario-result',
+    params: {
+      id: createdCase.id,
     },
   })
 
@@ -23,6 +23,11 @@ void [CaseForm, handleSubmitted]
 
 <template>
   <section class="case-input-page">
+    <v-alert class="case-input-page__disclaimer" density="comfortable" type="warning" variant="tonal">
+      본 서비스는 법률 자문을 제공하지 않습니다. 생성된 시나리오는 참고용이며, 실제 법적 결정은
+      반드시 변호사와 상담하십시오.
+    </v-alert>
+
     <div class="case-input-page__hero">
       <div class="case-input-page__copy">
         <p class="case-input-page__eyebrow">AutoJudge intake console</p>
@@ -53,6 +58,13 @@ void [CaseForm, handleSubmitted]
 .case-input-page {
   display: grid;
   gap: var(--space-6);
+}
+
+.case-input-page__disclaimer {
+  border: var(--border-thin) solid color-mix(in srgb, var(--color-warning) 32%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-warning) 14%, var(--color-surface));
+  box-shadow: var(--shadow-soft);
 }
 
 .case-input-page__hero {

@@ -1,11 +1,14 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 
-import { apiBaseUrl } from '../api'
+import { createCase as createCaseRequest, type CasePayload, type CaseRecord, type CaseType as ApiCaseType } from '../api/cases'
+import { getApiErrorMessage } from '../api/client'
 
-export const caseTypeOptions = ['손해배상', '계약위반', '부당이득'] as const
+export type { CasePayload, CaseRecord } from '../api/cases'
 
-export type CaseType = (typeof caseTypeOptions)[number]
+export type CaseType = '손해배상' | '계약위반' | '부당이득'
+
+export const caseTypeOptions = ['손해배상', '계약위반', '부당이득'] as const satisfies readonly CaseType[]
 
 export interface CaseDraft {
   case_type: CaseType | null
@@ -21,20 +24,6 @@ export interface CaseValidationErrors {
   facts: string
   claims: string
   evidence: string
-}
-
-export interface CasePayload {
-  case_type: CaseType
-  parties: string
-  facts: string
-  claims: string
-  evidence: string[]
-}
-
-export interface CaseRecord {
-  id: string
-  created_at: string
-  input_data: CasePayload
 }
 
 const emptyErrors: CaseValidationErrors = {
@@ -67,7 +56,7 @@ const buildValidationErrors = (draft: CaseDraft): CaseValidationErrors => ({
 const hasErrors = (errors: CaseValidationErrors) => Object.values(errors).some(Boolean)
 
 const toPayload = (draft: CaseDraft): CasePayload => ({
-  case_type: draft.case_type as CaseType,
+  case_type: draft.case_type as ApiCaseType,
   parties: draft.parties.trim(),
   facts: draft.facts.trim(),
   claims: draft.claims.trim(),
@@ -110,37 +99,12 @@ export const useCaseStore = defineStore('case', () => {
     isSubmitting.value = true
 
     try {
-      const response = await fetch(`${apiBaseUrl}/cases`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(toPayload(form.value)),
-      })
-
-      if (!response.ok) {
-        let detail = '사건 등록에 실패했습니다. 잠시 후 다시 시도해 주세요.'
-
-        try {
-          const errorData = (await response.json()) as { detail?: string }
-
-          if (typeof errorData.detail === 'string' && errorData.detail.trim()) {
-            detail = errorData.detail
-          }
-        } catch {
-          // ignore JSON parse failures and fall back to the default message
-        }
-
-        throw new Error(detail)
-      }
-
-      const createdCase = (await response.json()) as CaseRecord
+      const createdCase = await createCaseRequest(toPayload(form.value))
       lastCreatedCase.value = createdCase
 
       return createdCase
     } catch (error) {
-      submitError.value =
-        error instanceof Error ? error.message : '사건 등록에 실패했습니다. 잠시 후 다시 시도해 주세요.'
+      submitError.value = getApiErrorMessage(error) || '사건 등록에 실패했습니다. 잠시 후 다시 시도해 주세요.'
 
       return null
     } finally {
