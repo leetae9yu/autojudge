@@ -73,6 +73,22 @@ cp .env.example .env
 
 ### 3. 실행
 
+#### 한 번에 둘 다 실행 (권장)
+
+```bash
+./scripts/dev.sh
+```
+
+이 스크립트는:
+- 백엔드: `http://localhost:8000`
+- 프론트엔드: `http://localhost:3000`
+
+를 동시에 실행하고, `Ctrl+C`로 둘 다 함께 종료합니다.
+
+> 전제 조건:
+> - `backend/venv`가 이미 만들어져 있어야 합니다.
+> - `frontend/node_modules`가 이미 설치되어 있어야 합니다.
+
 #### Backend 실행
 
 ```bash
